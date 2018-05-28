@@ -1,0 +1,38 @@
+{
+    "target": "kvm", 
+    "env": {
+        "hosts": {
+            "www": {
+                "disk": "webserver.qcow2"
+            }, 
+            "main": {
+                "disk": "main.qcow2"
+            }, 
+            "redws": {
+                "iso": "kali.iso", 
+                "memory": "2G"
+            }, 
+            "blan": {
+                "disk": "blan.qcow2"
+            }
+        }, 
+        "network": {
+            "links": {
+                "www": [
+                    "blan"
+                ], 
+                "main": [
+                    "blan", 
+                    "redws"
+                ], 
+                "redws": [
+                    "main"
+                ], 
+                "blan": [
+                    "main", 
+                    "www"
+                ]
+            }
+        }
+    }
+}
